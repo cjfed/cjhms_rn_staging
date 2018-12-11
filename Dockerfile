@@ -8,10 +8,9 @@ RUN apt-get update && apt-get install -y curl apt-transport-https && \
 
 RUN npm install -g code-push-cli
 
-WORKDIR /cjhms_rn
+WORKDIR /staging
 
 RUN yarn
 
 # 热更新
-ENV script="./script/staging.js "
-RUN ["node", ${script}]
+ENTRYPOINT [ "node", "/staging/script/staging.js"]
